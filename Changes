@@ -1,4 +1,8 @@
 Revision history for libVector2d
 
+0.02    2014-09-04
+        -2d shapes, utility functions added
+        -rectangles_collide() added
+
 0.01    2014-09-03
         -Initial skeleton dir structure
