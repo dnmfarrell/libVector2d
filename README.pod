@@ -1,0 +1,35 @@
+=pod
+
+=encoding UTF-8
+
+=head1 NAME
+
+libVector2d - A 2d vector functions library written in C.
+
+=head1 VERSION
+
+version 0.01
+
+=head1 SYNOPSIS
+
+
+=head1 FUNCTIONS
+
+
+=head1 REPOSITORY
+
+L<https://github.com/sillymoose/libvector2d.git>
+
+=head1 THANKS
+
+The source code for this object was inspired by the code in Thomas Schwarzl's 2d  Game Collision Detection  L<book|http://www.collisiondetection2d.net>.
+
+=head1 AUTHOR
+
+David Farrell L<PerlTricks.com|http://perltricks.com>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2014 by David Farrell.
+
+=cut
