@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "libvector2d.h"
+#include "vector2d.h"
 
 Vector2d add_vector (Vector2d v1, Vector2d v2)
 {
