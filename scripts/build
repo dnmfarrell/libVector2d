@@ -1,3 +1,4 @@
 gcc -c -Wall -Werror -fpic -Isrc src/vector2d.c -obin/lib//vector2d.o
 gcc -shared -obin/lib/libvector2d.so bin/lib/vector2d.o
 rm bin/lib/vector2d.o
+gcc -Isrc -Lbin/lib -Wall -obin/examples/main examples/main.c bin/lib/libvector2d.so -lm
