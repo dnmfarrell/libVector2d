@@ -35,6 +35,12 @@ typedef struct{
     float rotation;
 } OrientedRectangle;
 
+typedef struct
+{
+    float minimum;
+    float maximum;
+} Range;
+
 // Utility functions
 extern float degrees_to_radians(float degrees);
 extern float radians_to_degrees(float radians);
@@ -62,6 +68,13 @@ extern bool equal_vectors(Vector2D a, Vector2D b);
 
 // Line functions
 extern bool equivalent_lines(Line a, Line b);
+extern bool on_one_side(Line axis, LineSegment s);
+
+// Range functions
+extern Range sort_range(Range r);
+extern Range project_segment(LineSegment s, Vector2D onto);
+extern bool overlapping_ranges(Range a, Range b);
+extern bool segments_collide(LineSegment a, LineSegment b);
 
 // Collision functions
 extern bool points_collide(Vector2D a, Vector2D b);

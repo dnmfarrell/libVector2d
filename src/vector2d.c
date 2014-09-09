@@ -174,3 +174,62 @@ bool lines_collide(Line a, Line b)
     }
         return true;
 }
+
+bool on_one_side(Line axis, LineSegment s)
+{
+    Vector2D d1 = subtract_vector(s.point1, axis.base);
+    Vector2D d2 = subtract_vector(s.point2, axis.base);
+    Vector2D n = rotate_vector_90(axis.direction);
+    return dot_product(n, d1) * dot_product(n, d2) > 0;
+}
+
+Range sort_range(Range r)
+{
+    Range sorted = r;
+    if(r.minimum > r.maximum)
+    {
+        sorted.minimum = r.maximum;
+        sorted.maximum = r.minimum;
+    }
+    return sorted;
+}
+
+Range project_segment(LineSegment s, Vector2D onto)
+{
+    Vector2D ontoUnit = unit_vector(onto);
+    Range r;
+    r.minimum = dot_product(ontoUnit, s.point1);
+    r.maximum = dot_product(ontoUnit, s.point2);
+    r = sort_range(r);
+    return r;
+}
+
+bool overlapping_ranges(Range a, Range b)
+{
+    return overlapping(a.minimum, a.maximum, b.minimum, b.maximum);
+}
+
+bool segments_collide(LineSegment a, LineSegment b)
+{
+    Line axisA, axisB;
+    axisA.base = a.point1;
+    axisA.direction = subtract_vector(a.point2, a.point1);
+
+    if(on_one_side(axisA, b))
+        return false;
+
+    axisB.base = b.point1;
+    axisB.direction = subtract_vector(b.point2, b.point1);
+
+    if(on_one_side(axisB, a))
+        return false;
+
+    if(parallel_vectors(axisA.direction, axisB.direction))
+    {
+        Range rangeA = project_segment(a, axisA.direction);
+        Range rangeB = project_segment(b, axisA.direction);
+        return overlapping_ranges(rangeA, rangeB);
+    }
+    else
+        return true;
+}
